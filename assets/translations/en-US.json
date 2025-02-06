@@ -1,0 +1,46 @@
+{
+    "homePage":"Home Page",
+    "cancel":"Cancel",
+    "close":"Close",
+    "logout":"Logout",
+    "exit":"Exit app",
+    "confirmExit":"Are you sure want to exit?",
+    "yes":"Yes",
+    "welcome": {
+        "identifyPlant":"Identify Plant",
+        "onBoardingfirst":"You can identify the plant you don't know through your camera",
+        "learnManyPlantsSpecies":"Learn Many Plants Species",
+        "onBoardingSecond":"Let's learn about the many plant species that exist in this world",
+        "readManyArticlesAboutPlant":"Read Many Articles About Plant",
+        "onBoardingThird":"Let's learn more about beautiful plants and read many articles about plants and gardening",
+        "getStarted":"Get Started",
+        "next":"Next"
+    },
+    "loginPage": {
+        "login":"Login",
+        "Hello":"Hello",
+        "subTitile":"Let's Learn More About Plants",
+        "userName":"Username",
+        "password":"Password",
+        "account":"Don’t Have Account? ",
+        "forgotPassword":"Forgot Password?",
+        "register":"Sign Up"
+    },
+    "RegisterPage": {
+        "title":"Register Page",
+        "register":"Register",
+        "subTitile":"Create an account to continue.",
+        "username":"Enter account name",
+        "mail":"Email",
+        "password":"Password",
+        "confirmPassword":"Confirm Password",
+        "question":"Already have an account? Go to the "
+    },
+    "ForgotpasswordPage":{
+        "title":"Set a new password",
+        "subTitile":"Create a new password. Ensure it differs from previous ones for security",
+        "password":"Enter your new password",
+        "confirmPassword":"Re-enter password",
+        "forgotPassword":"Update Password"
+    }
+}

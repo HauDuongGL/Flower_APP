@@ -1,0 +1,46 @@
+{
+    "homePage":"Trang chủ",
+    "close":"Đóng",
+    "logout":"Đăng xuất",
+    "exit":"Thoát ứng dụng",
+    "cancel":"Hủy",
+    "confirmExit":"Bạn có chắc chắn muốn thoát không?",
+    "yes":"Có",
+    "welcome": {
+        "identifyPlant":"Xác định cây trồng",
+        "onBoardingfirst":"Bạn có thể xác định được loài cây mà bạn không biết thông qua máy ảnh của bạn",
+        "learnManyPlantsSpecies":"Tìm hiểu nhiều loài thực vật",
+        "onBoardingSecond":"Hãy cùng tìm hiểu về nhiều loài thực vật tồn tại trên thế giới này",
+        "readManyArticlesAboutPlant":"Đọc Nhiều Bài Viết Về Cây Trồng",
+        "onBoardingThird":"Hãy cùng tìm hiểu thêm về các loại cây đẹp và đọc nhiều bài viết về cây và làm vườn",
+        "getStarted":"Bắt đầu",
+        "next":"Tiếp"
+    },
+    "loginPage": {
+        "login":"Đăng nhập",
+        "Hello":"Xin Chào",
+        "subTitile":"Hãy cùng tìm hiểu thêm về thực vật",
+        "userName":"Tên tài Khoản",
+        "password":"Mật Khẩu",
+        "account":"Bạn chưa có tài khoản? ",
+        "forgotPassword":"Quên mật khẩu?",
+        "register":"Đăng ký"
+    },
+    "RegisterPage": {
+        "title":"Đăng ký tài khoản",
+        "register":"Đăng ký",
+        "subTitile":"Tạo một tài khoản để tiếp tục.",
+        "username":"nhập tên tài khoản",
+        "mail":"nhập email",
+        "password":"nhập mật khẩu",
+        "confirmPassword":"nhập lại mật khẩu",
+        "question":"Đã có tài khoản? Đi đến trang "
+    },
+    "ForgotpasswordPage":{
+        "title":"Đặt mật khẩu mới",
+        "subTitile":"Tạo mật khẩu mới. Đảm bảo nó khác với những cái trước để bảo mật",
+        "password":"Nhập mật khẩu mới của bạn",
+        "confirmPassword":"Nhập lại mật khẩu",
+        "forgotPassword":"Cập nhật mật khẩu"
+    }
+}
