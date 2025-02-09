@@ -7,6 +7,7 @@ import 'package:flutter_base_bloc/core/config/resources/color.dart';
 import 'package:flutter_base_bloc/core/config/resources/dimens.dart';
 import 'package:flutter_base_bloc/core/config/resources/styles.dart';
 import 'package:flutter_base_bloc/core/config/router/router_name.dart';
+import 'package:flutter_base_bloc/domain/entities/login.dart';
 import 'package:flutter_base_bloc/gen/translations.g.dart';
 import 'package:flutter_base_bloc/presentation/login/bloc/login_bloc.dart';
 import 'package:flutter_base_bloc/presentation/widgets/button/app_button.dart';
@@ -37,7 +38,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final userController = TextEditingController();
+  final passwordController = TextEditingController();
   bool _obscureText = true;
+
+  @override
+  void dispose() {
+    userController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -77,6 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                         CupertinoIcons.person,
                         color: color6A6F7D,
                       ),
+                      controller: userController,
                     ),
                     spaceH16,
                     FieldTextCommon(
@@ -95,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                           });
                         },
                       ),
+                      controller: passwordController,
                     ),
                     spaceH16,
                     Row(
@@ -116,17 +129,54 @@ class _LoginPageState extends State<LoginPage> {
                     Center(
                       child: Column(
                         children: [
-                          AppButton(
-                            color: colorMintyFresh,
-                            padding: EdgeInsets.symmetric(
-                              horizontal: Dimens.d120.r,
-                              vertical: Dimens.d12.r,
+                          BlocListener<LoginBloc, LoginState>(
+                            listener: (context, state) {
+                              if (state.isLoading) {
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (_) => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                );
+                              } else {
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
+                              }
+
+                              if (state.isSuccess) {
+                                context.pushNamed(RoutesName.main.name);
+                              }
+
+                              if (state.errorMessage.isNotEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(state.errorMessage)),
+                                );
+                              }
+                            },
+                            child: BlocBuilder<LoginBloc, LoginState>(
+                              builder: (context, state) {
+                                return AppButton(
+                                  color: colorMintyFresh,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: Dimens.d120.r,
+                                    vertical: Dimens.d12.r,
+                                  ),
+                                  onTap: () {
+                                    final loginModel = LoginModel(
+                                      usename: userController.text,
+                                      password: passwordController.text,
+                                    );
+                                    context.read<LoginBloc>().add(
+                                        LoginEvent.login(
+                                            loginModel: loginModel));
+                                  },
+                                  title: LocaleKeys.loginPage_login.tr(),
+                                  style: AppTextStyle.mediumText.copyWith(
+                                      fontSize: Dimens.d15, color: colorWhite),
+                                );
+                              },
                             ),
-                            onTap: () =>
-                                context.pushNamed(RoutesName.main.name),
-                            title: LocaleKeys.loginPage_login.tr(),
-                            style: AppTextStyle.mediumText.copyWith(
-                                fontSize: Dimens.d15, color: colorWhite),
                           ),
                           spaceH16,
                           RichText(

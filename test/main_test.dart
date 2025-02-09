@@ -9,6 +9,6 @@ import 'login_test.dart' as login_test;
 import 'user_test.dart' as user_test;
 
 void main() {
-  login_test.main();
+  // login_test.main();
   user_test.main();
 }

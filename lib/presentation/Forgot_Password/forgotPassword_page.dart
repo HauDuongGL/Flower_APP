@@ -36,7 +36,17 @@ class ForgotpasswordPage extends StatefulWidget {
 }
 
 class _ForgotpasswordPageState extends State<ForgotpasswordPage> {
+  final passwordController = TextEditingController();
+  final confirmpasswordController = TextEditingController();
   bool _obscureText = true;
+
+  @override
+  void dispose() {
+    passwordController.dispose();
+    confirmpasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -76,6 +86,7 @@ class _ForgotpasswordPageState extends State<ForgotpasswordPage> {
                         CupertinoIcons.person,
                         color: color6A6F7D,
                       ),
+                      controller: passwordController,
                     ),
                     spaceH16,
                     FieldTextCommon(
@@ -95,6 +106,7 @@ class _ForgotpasswordPageState extends State<ForgotpasswordPage> {
                           });
                         },
                       ),
+                      controller: confirmpasswordController,
                     ),
                     spaceH28,
                     Center(

@@ -108,7 +108,7 @@ final GoRouter appRouterConfig = GoRouter(
     ),
     _defaultGorouter(
       router: RoutesName.login,
-      builder: (context, state) => const LoginPage(),
+      builder: (context, state) => const LoginPageProvider(),
     ),
     _defaultGorouter(
       router: RoutesName.register,
