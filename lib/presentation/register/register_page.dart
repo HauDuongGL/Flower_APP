@@ -37,7 +37,21 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final userController = TextEditingController();
+  final mailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmpasswordController = TextEditingController();
   bool _obscureText = true;
+
+  @override
+  void dispose() {
+    userController.dispose();
+    mailController.dispose();
+    passwordController.dispose();
+    confirmpasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -77,6 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         CupertinoIcons.person,
                         color: color6A6F7D,
                       ),
+                      controller: userController,
                     ),
                     spaceH16,
                     FieldTextCommon(
@@ -85,6 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         CupertinoIcons.envelope,
                         color: color6A6F7D,
                       ),
+                      controller: mailController,
                     ),
                     spaceH16,
                     FieldTextCommon(
@@ -103,6 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           });
                         },
                       ),
+                      controller: passwordController,
                     ),
                     spaceH16,
                     FieldTextCommon(
@@ -121,6 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           });
                         },
                       ),
+                      controller: confirmpasswordController,
                     ),
                     spaceH16,
                     Center(

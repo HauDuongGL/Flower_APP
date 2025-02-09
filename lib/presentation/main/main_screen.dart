@@ -35,8 +35,8 @@ class _HomeScreenState extends BasePageState<MainScreen, MainBloc> {
 
   @override
   void initState() {
-    bloc.add(const MainEvent.getAllUser());
-    bloc.add(const MainEvent.getUserInfo());
+    // bloc.add(const MainEvent.getAllUser());
+    // bloc.add(const MainEvent.getUserInfo());
     super.initState();
   }
 
