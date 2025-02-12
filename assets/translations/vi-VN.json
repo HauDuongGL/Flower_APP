@@ -37,10 +37,19 @@
         "question":"Đã có tài khoản? Đi đến trang "
     },
     "ForgotpasswordPage":{
+        "message":"nhập mật khẩu không khớp",
         "title":"Đặt mật khẩu mới",
         "subTitile":"Tạo mật khẩu mới. Đảm bảo nó khác với những cái trước để bảo mật",
+        "email":"nhập email của bạn",
         "password":"Nhập mật khẩu mới của bạn",
         "confirmPassword":"Nhập lại mật khẩu",
         "forgotPassword":"Cập nhật mật khẩu"
+    },
+    "erorrMessage":{
+        "Timeout":"Quá thời gian xử lý, vui lòng thử lại",
+        "noEmail":"Email không tồn tại",
+        "cofilmPassword":"Mật khẩu xác nhận không khớp",
+        "forgotPassword":"Vui lòng đợi sau 10 phút mới xử lý đổi mật khẩu."
     }
+
 }

@@ -112,11 +112,11 @@ final GoRouter appRouterConfig = GoRouter(
     ),
     _defaultGorouter(
       router: RoutesName.register,
-      builder: (context, state) => const RegisterPage(),
+      builder: (context, state) => const RegisterPageProvider(),
     ),
     _defaultGorouter(
       router: RoutesName.forgotPassword,
-      builder: (context, state) => const ForgotpasswordPage(),
+      builder: (context, state) => const ForgotpasswordPageProvider(),
     ),
     // _defaultGorouter(
     //   router: RoutesName.newsDetail,

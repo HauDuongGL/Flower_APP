@@ -6,8 +6,9 @@ import 'package:flutter_base_bloc/core/config/resources/color.dart';
 import 'package:flutter_base_bloc/core/config/resources/dimens.dart';
 import 'package:flutter_base_bloc/core/config/resources/styles.dart';
 import 'package:flutter_base_bloc/core/config/router/router_name.dart';
+import 'package:flutter_base_bloc/domain/entities/forgotPassword.dart';
 import 'package:flutter_base_bloc/gen/translations.g.dart';
-import 'package:flutter_base_bloc/presentation/login/bloc/login_bloc.dart';
+import 'package:flutter_base_bloc/presentation/Forgot_Password/bloc/forgot_password_bloc.dart';
 import 'package:flutter_base_bloc/presentation/widgets/button/app_button.dart';
 import 'package:flutter_base_bloc/presentation/widgets/fillter/filter_screen.dart';
 
@@ -22,7 +23,7 @@ class ForgotpasswordPageProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(),
+      create: (context) => ForgotPasswordBloc(),
       child: const ForgotpasswordPage(),
     );
   }
@@ -36,12 +37,14 @@ class ForgotpasswordPage extends StatefulWidget {
 }
 
 class _ForgotpasswordPageState extends State<ForgotpasswordPage> {
+  final email = TextEditingController();
   final passwordController = TextEditingController();
   final confirmpasswordController = TextEditingController();
   bool _obscureText = true;
 
   @override
   void dispose() {
+    email.dispose();
     passwordController.dispose();
     confirmpasswordController.dispose();
     super.dispose();
@@ -81,10 +84,29 @@ class _ForgotpasswordPageState extends State<ForgotpasswordPage> {
                     ),
                     spaceH16,
                     FieldTextCommon(
-                      labelText: LocaleKeys.ForgotpasswordPage_password.tr(),
+                      labelText: LocaleKeys.ForgotpasswordPage_email.tr(),
                       suffixIcon: const Icon(
                         CupertinoIcons.person,
                         color: color6A6F7D,
+                      ),
+                      controller: email,
+                    ),
+                    spaceH16,
+                    FieldTextCommon(
+                      isPassword: _obscureText,
+                      labelText: LocaleKeys.ForgotpasswordPage_password.tr(),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscureText
+                              ? CupertinoIcons.eye
+                              : CupertinoIcons.eye_slash,
+                          color: color6A6F7D,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
                       ),
                       controller: passwordController,
                     ),
@@ -110,17 +132,71 @@ class _ForgotpasswordPageState extends State<ForgotpasswordPage> {
                     ),
                     spaceH28,
                     Center(
-                      child: AppButton(
-                        color: colorMintyFresh,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Dimens.d80.r,
-                          vertical: Dimens.d12.r,
+                      child:
+                          BlocListener<ForgotPasswordBloc, ForgotPasswordState>(
+                        listenWhen: (previous, current) =>
+                            previous.isLoading != current.isLoading,
+                        listener: (context, state) {
+                          if (state.isLoading) {
+                            showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (_) => const Center(
+                                      child: CircularProgressIndicator(),
+                                    ));
+                          } else {
+                            Navigator.of(context, rootNavigator: true).pop();
+                          }
+                          if (state.isSuccess) {
+                            context.pushNamed(RoutesName.login.name);
+                          }
+                          if (state.errorMessgae.isNotEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(state.errorMessgae),
+                              ),
+                            );
+                          }
+                        },
+                        child: BlocBuilder<ForgotPasswordBloc,
+                            ForgotPasswordState>(
+                          buildWhen: (previous, current) =>
+                              previous.isLoading != current.isLoading,
+                          builder: (context, state) {
+                            return AppButton(
+                              color: colorMintyFresh,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: Dimens.d80.r,
+                                vertical: Dimens.d12.r,
+                              ),
+                              onTap: () {
+                                if (passwordController.text !=
+                                    confirmpasswordController.text) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content: Text(LocaleKeys
+                                            .ForgotpasswordPage_message.tr())),
+                                  );
+                                  return;
+                                }
+                                context
+                                    .read<ForgotPasswordBloc>()
+                                    .add(ForgotPasswordEvent.forgotPassword(
+                                      forgotPassword: ForgotpasswordModel(
+                                        email: email.text,
+                                        password: passwordController.text,
+                                        confirmPassword:
+                                            confirmpasswordController.text,
+                                      ),
+                                    ));
+                              },
+                              title: LocaleKeys
+                                  .ForgotpasswordPage_forgotPassword.tr(),
+                              style: AppTextStyle.mediumText.copyWith(
+                                  fontSize: Dimens.d15, color: colorWhite),
+                            );
+                          },
                         ),
-                        onTap: () => context.pushNamed(RoutesName.login.name),
-                        title:
-                            LocaleKeys.ForgotpasswordPage_forgotPassword.tr(),
-                        style: AppTextStyle.mediumText
-                            .copyWith(fontSize: Dimens.d15, color: colorWhite),
                       ),
                     ),
                   ],
