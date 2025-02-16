@@ -7,6 +7,7 @@ import 'package:flutter_base_bloc/core/network/di/module.dart';
 import 'package:flutter_base_bloc/core/use_case/user/get_all_user_use_case.dart';
 import 'package:flutter_base_bloc/core/use_case/user/get_user_info_use_case.dart';
 import 'package:flutter_base_bloc/core/use_case/user/get_user_use_case.dart';
+import 'package:flutter_base_bloc/presentation/main/common/enum.dart';
 import 'package:flutter_base_bloc/data/request/find_user_request.dart';
 import 'package:flutter_base_bloc/domain/entities/user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,9 +76,9 @@ class MainBloc extends BaseBloc<MainEvent, MainState> {
 
   FutureOr<void> _onChangedPage(
       _OnChangedPage event, Emitter<MainState> emit) async {
-    if (state.currentPageIndex != event.page) {
+    if (state.currentPageType != event.type) {
       emit(
-        state.copyWith(currentPageIndex: event.page),
+        state.copyWith(currentPageType: event.type),
       );
     }
   }

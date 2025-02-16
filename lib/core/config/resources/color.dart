@@ -94,6 +94,7 @@ class LightApp extends AppColor {
     return colorPrimary;
   }
 
+  @override
   Color get mintyFresh {
     return colorMintyFresh;
   }

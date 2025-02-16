@@ -5,6 +5,6 @@ class MainEvent extends BaseEvent with _$MainEvent {
   const factory MainEvent.started() = _Started;
   const factory MainEvent.getAllUser() = _OnGetAllUser;
   const factory MainEvent.getUser(String id) = _OnGetUser;
-  const factory MainEvent.changePage(int page) = _OnChangedPage;
+  const factory MainEvent.changePage(PageType type) = _OnChangedPage;
   const factory MainEvent.getUserInfo() = _OnGetUserInfo;
 }
