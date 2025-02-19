@@ -68,6 +68,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_funding.svg
   SvgGenImage get icFunding => const SvgGenImage('assets/icons/ic_funding.svg');
 
+  /// File path: assets/icons/ic_group.svg
+  SvgGenImage get icGroup => const SvgGenImage('assets/icons/ic_group.svg');
+
+  /// File path: assets/icons/ic_home.svg
+  SvgGenImage get icHome => const SvgGenImage('assets/icons/ic_home.svg');
+
   /// File path: assets/icons/ic_more_horizontal.svg
   SvgGenImage get icMoreHorizontal =>
       const SvgGenImage('assets/icons/ic_more_horizontal.svg');
@@ -89,6 +95,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_scan.svg
   SvgGenImage get icScan => const SvgGenImage('assets/icons/ic_scan.svg');
+
+  /// File path: assets/icons/ic_search.svg
+  SvgGenImage get icSearch => const SvgGenImage('assets/icons/ic_search.svg');
 
   /// File path: assets/icons/ic_send.svg
   SvgGenImage get icSend => const SvgGenImage('assets/icons/ic_send.svg');
@@ -134,6 +143,8 @@ class $AssetsIconsGen {
         icExport,
         icEyeClose,
         icFunding,
+        icGroup,
+        icHome,
         icMoreHorizontal,
         icNotice,
         icReceive,
@@ -141,6 +152,7 @@ class $AssetsIconsGen {
         icRemove,
         icRight,
         icScan,
+        icSearch,
         icSend,
         icSettings,
         icSmallReceive,
@@ -154,6 +166,30 @@ class $AssetsIconsGen {
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/backgrond_spring_flowers.png
+  AssetGenImage get backgrondSpringFlowers =>
+      const AssetGenImage('assets/images/backgrond_spring_flowers.png');
+
+  /// File path: assets/images/backgrond_summer_flowers.png
+  AssetGenImage get backgrondSummerFlowers =>
+      const AssetGenImage('assets/images/backgrond_summer_flowers.png');
+
+  /// File path: assets/images/background_autumn_flowers.png
+  AssetGenImage get backgroundAutumnFlowers =>
+      const AssetGenImage('assets/images/background_autumn_flowers.png');
+
+  /// File path: assets/images/background_winter_flowers.png
+  AssetGenImage get backgroundWinterFlowers =>
+      const AssetGenImage('assets/images/background_winter_flowers.png');
+
+  /// File path: assets/images/bg_favorite.png
+  AssetGenImage get bgFavorite =>
+      const AssetGenImage('assets/images/bg_favorite.png');
+
+  /// File path: assets/images/bg_question.png
+  AssetGenImage get bgQuestion =>
+      const AssetGenImage('assets/images/bg_question.png');
 
   /// File path: assets/images/logo_btc.png
   AssetGenImage get logoBtc =>
@@ -180,6 +216,12 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        backgrondSpringFlowers,
+        backgrondSummerFlowers,
+        backgroundAutumnFlowers,
+        backgroundWinterFlowers,
+        bgFavorite,
+        bgQuestion,
         logoBtc,
         onboardingFirst,
         onboardingFourth,
@@ -203,7 +245,7 @@ class $AssetsTranslationsGen {
 }
 
 class Assets {
-  Assets._();
+  const Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
@@ -243,7 +285,7 @@ class AssetGenImage {
     bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
-    FilterQuality filterQuality = FilterQuality.low,
+    FilterQuality filterQuality = FilterQuality.medium,
     int? cacheWidth,
     int? cacheHeight,
   }) {

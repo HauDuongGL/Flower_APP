@@ -20,7 +20,7 @@
         "login":"Login",
         "Hello":"Hello",
         "subTitile":"Let's Learn More About Plants",
-        "userName":"Username",
+        "userName":"Email",
         "password":"Password",
         "account":"Don’t Have Account? ",
         "forgotPassword":"Forgot Password?",
@@ -37,10 +37,18 @@
         "question":"Already have an account? Go to the "
     },
     "ForgotpasswordPage":{
+        "message":"Password input does not match",
         "title":"Set a new password",
         "subTitile":"Create a new password. Ensure it differs from previous ones for security",
+        "email":"Enter your email",
         "password":"Enter your new password",
         "confirmPassword":"Re-enter password",
         "forgotPassword":"Update Password"
+    },
+    "erorrMessage":{
+        "Timeout":"Processing timeout, please try again",
+        "noEmail":"Email does not exist",
+        "cofilmPassword":"Confirmed password does not match",
+        "forgotPassword":"Please wait 10 minutes to process password change."
     }
 }

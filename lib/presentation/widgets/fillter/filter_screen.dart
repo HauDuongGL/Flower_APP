@@ -5,23 +5,26 @@ import 'package:flutter_base_bloc/core/config/resources/styles.dart';
 
 class FieldTextCommon extends StatelessWidget {
   final BorderSide? borderSide;
+  final TextEditingController controller;
   final String labelText;
   final TextStyle? labelStyle;
   final Widget? suffixIcon;
   final bool isPassword;
 
-  FieldTextCommon({
+  const FieldTextCommon({
     this.isPassword = false,
     this.borderSide,
     this.labelStyle,
     this.suffixIcon,
     required this.labelText,
+    required this.controller,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       obscureText: isPassword,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
@@ -40,6 +43,12 @@ class FieldTextCommon extends StatelessWidget {
             ),
         suffixIcon: suffixIcon,
       ),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "$labelText is missing!";
+        }
+        return null;
+      },
     );
   }
 }

@@ -104,7 +104,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 color: AppTheme.getInstance().mintyFresh,
                 onTap: () {
                   if (islastPage) {
-                    context.pushNamed(RoutesName.login.name);
+                    context.pushNamed(RoutesName.home.name);
                   } else {
                     controller.nextPage(
                       duration: const Duration(milliseconds: 500),

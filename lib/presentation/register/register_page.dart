@@ -7,8 +7,10 @@ import 'package:flutter_base_bloc/core/config/resources/color.dart';
 import 'package:flutter_base_bloc/core/config/resources/dimens.dart';
 import 'package:flutter_base_bloc/core/config/resources/styles.dart';
 import 'package:flutter_base_bloc/core/config/router/router_name.dart';
+import 'package:flutter_base_bloc/domain/entities/register.dart';
 import 'package:flutter_base_bloc/gen/translations.g.dart';
-import 'package:flutter_base_bloc/presentation/login/bloc/login_bloc.dart';
+
+import 'package:flutter_base_bloc/presentation/register/bloc/register_bloc.dart';
 import 'package:flutter_base_bloc/presentation/widgets/button/app_button.dart';
 import 'package:flutter_base_bloc/presentation/widgets/fillter/filter_screen.dart';
 
@@ -23,7 +25,7 @@ class RegisterPageProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(),
+      create: (context) => RegisterBloc(),
       child: const RegisterPage(),
     );
   }
@@ -37,7 +39,21 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final userController = TextEditingController();
+  final mailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmpasswordController = TextEditingController();
   bool _obscureText = true;
+
+  @override
+  void dispose() {
+    userController.dispose();
+    mailController.dispose();
+    passwordController.dispose();
+    confirmpasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -77,6 +93,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         CupertinoIcons.person,
                         color: color6A6F7D,
                       ),
+                      controller: userController,
                     ),
                     spaceH16,
                     FieldTextCommon(
@@ -85,6 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         CupertinoIcons.envelope,
                         color: color6A6F7D,
                       ),
+                      controller: mailController,
                     ),
                     spaceH16,
                     FieldTextCommon(
@@ -103,6 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           });
                         },
                       ),
+                      controller: passwordController,
                     ),
                     spaceH16,
                     FieldTextCommon(
@@ -121,20 +140,80 @@ class _RegisterPageState extends State<RegisterPage> {
                           });
                         },
                       ),
+                      controller: confirmpasswordController,
                     ),
                     spaceH16,
                     Center(
                       child: Column(
                         children: [
-                          AppButton(
-                            color: colorMintyFresh,
-                            padding: EdgeInsets.symmetric(
-                              horizontal: Dimens.d120.r,
-                              vertical: Dimens.d12.r,
+                          BlocListener<RegisterBloc, RegisterState>(
+                            listenWhen: (previous, current) =>
+                                previous.isLoading != current.isLoading,
+                            listener: (context, state) {
+                              if (state.isLoading) {
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (_) => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                );
+                              } else {
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
+                              }
+
+                              if (state.isSuccess) {
+                                context.pushNamed(RoutesName.login.name);
+                              }
+
+                              if (state.errorMessage.isNotEmpty) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text(state.errorMessage),
+                                ));
+                              }
+                            },
+                            child: BlocBuilder<RegisterBloc, RegisterState>(
+                              buildWhen: (previous, current) =>
+                                  previous.isLoading != current.isLoading,
+                              builder: (context, state) {
+                                return AppButton(
+                                  color: colorMintyFresh,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: Dimens.d120.r,
+                                    vertical: Dimens.d12.r,
+                                  ),
+                                  onTap: () {
+                                    if (passwordController.text !=
+                                        confirmpasswordController.text) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                'nhập mật khẩu không khớp')),
+                                      );
+                                      return;
+                                    }
+
+                                    context.read<RegisterBloc>().add(
+                                        RegisterEvent.register(
+                                            registerModel: RegisterModel(
+                                                email: mailController.text,
+                                                password:
+                                                    passwordController.text,
+                                                confirmPassword:
+                                                    confirmpasswordController
+                                                        .text,
+                                                username:
+                                                    userController.text)));
+                                  },
+                                  title: LocaleKeys.RegisterPage_register.tr(),
+                                  style: AppTextStyle.mediumText.copyWith(
+                                      fontSize: Dimens.d15, color: colorWhite),
+                                );
+                              },
                             ),
-                            title: LocaleKeys.RegisterPage_register.tr(),
-                            style: AppTextStyle.mediumText.copyWith(
-                                fontSize: Dimens.d15, color: colorWhite),
                           ),
                           spaceH16,
                           RichText(
