@@ -44,12 +44,20 @@ const colorGrey = Color(0xff929FB3);
 const colorA1A8B9 = Color(0xffA1A8B9);
 const color495566 = Color(0xff495566);
 const color6A6F7D = Color(0xff6A6F7D);
+const color9D9D9D = Color(0xff9D9D9D);
+const color61D2C4 = Color(0xff61D2C4);
+const color29D890 = Color(0xff29D890);
+const colorD2D2D2 = Color(0xffD2D2D2);
+const color36455A = Color(0xff36455A);
 
 // Using https://www.color-name.com/ to find color name and put main color to first and attribute second
 
 ///=========== Using to make change app theme ================================
 abstract class AppColor {
+  Color get lightGrey;
+  Color get darkBlueGray;
   Color get mintyFresh;
+  Color get lightSilver;
   Color get primaryColor;
   Color get formColor;
   Color get textPrimary;
@@ -82,6 +90,7 @@ abstract class AppColor {
   Color get backGroundScopeOperation;
   Color get sliderColor;
   List<Color> get linearOnboarding;
+  List<Color> get linearHomeAppBar;
   List<Color> get linearToolbar;
   List<Color> get linearSystemWallet;
   List<Color> get linearButton;
@@ -92,6 +101,21 @@ class LightApp extends AppColor {
   @override
   Color get primaryColor {
     return colorPrimary;
+  }
+
+  @override
+  Color get darkBlueGray {
+    return color36455A;
+  }
+
+  @override
+  Color get lightGrey {
+    return colorD2D2D2;
+  }
+
+  @override
+  Color get lightSilver {
+    return color9D9D9D;
   }
 
   @override
@@ -138,6 +162,12 @@ class LightApp extends AppColor {
   List<Color> get linearToolbar => [
         colorLeftLiner.withOpacity(0.2),
         colorRightLinear.withOpacity(0.2),
+      ];
+
+  @override
+  List<Color> get linearHomeAppBar => [
+        color61D2C4,
+        color29D890,
       ];
 
   @override
@@ -235,6 +265,20 @@ class DarkApp extends AppColor {
   }
 
   @override
+  Color get darkBlueGray {
+    return color36455A;
+  }
+
+  @override
+  Color get lightGrey {
+    return colorD2D2D2;
+  }
+
+  Color get lightSilver {
+    return color9D9D9D;
+  }
+
+  @override
   Color get mintyFresh {
     return colorMintyFresh;
   }
@@ -273,6 +317,12 @@ class DarkApp extends AppColor {
   List<Color> get linearOnboarding {
     return [colorForm, Colors.white];
   }
+
+  @override
+  List<Color> get linearHomeAppBar => [
+        color61D2C4,
+        color29D890,
+      ];
 
   @override
   List<Color> get linearToolbar => [

@@ -5,7 +5,7 @@ class MainState extends BaseState with _$MainState {
   const factory MainState({
     @Default(<UserModel>[]) List<UserModel> users,
     UserModel? userInfo,
-    @Default(PageType.search) PageType currentPageType,
+    @Default(PageType.home) PageType currentPageType,
     AppException? err,
   }) = _MainState;
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_bloc/core/base/page/base_scafold.dart';
 import 'package:flutter_base_bloc/core/config/themes/app_theme.dart';
+import 'package:flutter_base_bloc/presentation/camera/camera.dart';
 import 'package:flutter_base_bloc/presentation/home/home_page.dart';
 import 'package:flutter_base_bloc/presentation/main/common/enum.dart';
+import 'package:flutter_base_bloc/presentation/profile/profile.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,6 +63,8 @@ class _MainScreenState extends State<MainScreen> {
           physics: const NeverScrollableScrollPhysics(),
           children: const [
             HomePageProvider(),
+            CameraPageProvider(),
+            ProfilePageProvider(),
           ],
         ),
       ),
@@ -105,9 +109,7 @@ class _MainScreenState extends State<MainScreen> {
             horizontal: 16.w,
             vertical: 4.h,
           ),
-          color: page == currentPage
-              ? AppTheme.getInstance().primaryColor
-              : Colors.transparent,
+          color: page == currentPage ? null : Colors.transparent,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -115,8 +117,9 @@ class _MainScreenState extends State<MainScreen> {
               page.svgGenImage.svg(
                 colorFilter: page == currentPage
                     ? ColorFilter.mode(
-                        AppTheme.getInstance().aliceBlue, BlendMode.srcIn)
-                    : null,
+                        AppTheme.getInstance().mintyFresh, BlendMode.srcIn)
+                    : ColorFilter.mode(
+                        AppTheme.getInstance().lightSilver, BlendMode.srcIn),
               ),
               FittedBox(
                 fit: BoxFit.cover,
@@ -127,8 +130,8 @@ class _MainScreenState extends State<MainScreen> {
                     fontWeight:
                         page == currentPage ? FontWeight.w700 : FontWeight.w400,
                     color: page == currentPage
-                        ? AppTheme.getInstance().aliceBlue
-                        : AppTheme.getInstance().seaBlue,
+                        ? AppTheme.getInstance().mintyFresh
+                        : AppTheme.getInstance().lightSilver,
                   ),
                   textAlign: TextAlign.center,
                 ),

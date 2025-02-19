@@ -1,9 +1,9 @@
 import 'package:flutter_base_bloc/gen/assets.gen.dart';
 
 enum PageType {
-  search(0),
-  battery(1),
-  news(2);
+  home(0),
+  camera(1),
+  profile(2);
 
   final int pageIndex;
   const PageType(this.pageIndex);
@@ -14,7 +14,7 @@ enum PageType {
         (element) => element.pageIndex == index,
       );
     } catch (_) {
-      return PageType.search;
+      return PageType.home;
     }
   }
 }
@@ -22,23 +22,23 @@ enum PageType {
 extension PageTypeExtension on PageType {
   String get pageName {
     switch (this) {
-      case PageType.news:
+      case PageType.profile:
+        return "Profile";
+      case PageType.camera:
+        return "Camera";
+      case PageType.home:
         return "Home";
-      case PageType.search:
-        return "camera";
-      case PageType.battery:
-        return "profile";
     }
   }
 
   SvgGenImage get svgGenImage {
     switch (this) {
-      case PageType.news:
-        return Assets.icons.icAddSmall;
-      case PageType.search:
+      case PageType.home:
+        return Assets.icons.icHome;
+      case PageType.camera:
         return Assets.icons.icAddressBook;
-      case PageType.battery:
-        return Assets.icons.icArrowLeft;
+      case PageType.profile:
+        return Assets.icons.icGroup;
     }
   }
 }

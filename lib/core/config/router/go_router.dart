@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_bloc/core/network/di/module.dart';
 import 'package:flutter_base_bloc/domain/locals/prefs_service.dart';
-import 'package:flutter_base_bloc/presentation/Forgot_Password/forgotPassword_page.dart';
+import 'package:flutter_base_bloc/presentation/forgot_password/forgotPassword_page.dart';
 import 'package:flutter_base_bloc/presentation/home/home_page.dart';
 import 'package:flutter_base_bloc/presentation/login/login_page.dart';
 // import 'package:flutter_base_bloc/presentation/home/home_page.dart';
@@ -173,7 +173,6 @@ final GoRouter appRouterConfig = GoRouter(
       router: RoutesName.bottomSheet,
       arg: AppBottomSheetArgs(
         builder: (context) {
-          // TODO(hungnd): test function
           return Container(
             color: Colors.red,
             width: double.infinity,

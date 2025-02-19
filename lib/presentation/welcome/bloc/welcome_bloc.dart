@@ -7,8 +7,6 @@ part 'welcome_bloc.freezed.dart';
 
 class WelcomeBloc extends BaseBloc<WelcomeEvent, WelcomeState> {
   WelcomeBloc() : super(_Initial()) {
-    on<WelcomeEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<WelcomeEvent>((event, emit) {});
   }
 }

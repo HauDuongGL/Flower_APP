@@ -8,7 +8,7 @@ import 'package:flutter_base_bloc/core/config/resources/styles.dart';
 import 'package:flutter_base_bloc/core/config/router/router_name.dart';
 import 'package:flutter_base_bloc/domain/entities/forgotPassword.dart';
 import 'package:flutter_base_bloc/gen/translations.g.dart';
-import 'package:flutter_base_bloc/presentation/Forgot_Password/bloc/forgot_password_bloc.dart';
+import 'package:flutter_base_bloc/presentation/forgot_password/bloc/forgot_password_bloc.dart';
 import 'package:flutter_base_bloc/presentation/widgets/button/app_button.dart';
 import 'package:flutter_base_bloc/presentation/widgets/fillter/filter_screen.dart';
 
