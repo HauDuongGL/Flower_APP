@@ -9,6 +9,7 @@ import 'package:flutter_base_bloc/presentation/home/bloc/home_bloc.dart';
 import 'package:flutter_base_bloc/presentation/home/common/enum.dart';
 import 'package:flutter_base_bloc/presentation/home/common/search_common.dart';
 import 'package:flutter_base_bloc/presentation/home/widget/items.dart';
+import 'package:flutter_base_bloc/presentation/home/widget/list_items_flower.dart';
 import 'package:flutter_base_bloc/presentation/widgets/button/app_button.dart';
 import 'package:flutter_base_bloc/utils/style_utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -229,6 +230,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
+                      ListItemFlower()
                     ],
                   ),
                 ),
