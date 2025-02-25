@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_bloc/core/network/di/module.dart';
 import 'package:flutter_base_bloc/domain/locals/prefs_service.dart';
-import 'package:flutter_base_bloc/presentation/Forgot_Password/forgotPassword_page.dart';
+import 'package:flutter_base_bloc/presentation/forgot_password/forgotPassword_page.dart';
+import 'package:flutter_base_bloc/presentation/home/home_page.dart';
 import 'package:flutter_base_bloc/presentation/login/login_page.dart';
 // import 'package:flutter_base_bloc/presentation/home/home_page.dart';
 import 'package:flutter_base_bloc/presentation/main/main_screen.dart';
 import 'package:flutter_base_bloc/presentation/register/register_page.dart';
 import 'package:flutter_base_bloc/presentation/welcome/welcome_screen.dart';
 import 'package:flutter_base_bloc/presentation/widgets/dialog/app_bottom_sheet_args.dart';
-import 'package:flutter_base_bloc/presentation/widgets/dialog/app_dialog_page.dart';
+// import 'package:flutter_base_bloc/presentation/widgets/dialog/app_dialog_page.dart';
 
 import 'package:go_router/go_router.dart';
 
@@ -58,21 +59,6 @@ GoRoute _transitionRouter({
       },
     );
 
-GoRoute _dialogRoute({
-  required RoutesGen router,
-  required Widget Function(BuildContext context, GoRouterState state) builder,
-}) {
-  return GoRoute(
-    path: router.path,
-    name: router.name,
-    pageBuilder: (BuildContext context, GoRouterState state) {
-      return AppDialogPage(
-        builder: (context) => builder(context, state),
-      );
-    },
-  );
-}
-
 GoRoute _bottomSheetRoute({
   required RoutesGen router,
   required AppBottomSheetArgs arg,
@@ -102,6 +88,18 @@ final GoRouter appRouterConfig = GoRouter(
   navigatorKey: getIt.get<GlobalKey<NavigatorState>>(),
   initialLocation: RoutesName.welcome.path,
   routes: <RouteBase>[
+    _defaultGorouter(
+      router: RoutesName.main,
+      builder: (context, state) => const Main(),
+      goRoutes: [
+        _defaultGorouter(
+          router: RoutesName.home,
+          builder: (context, state) {
+            return const HomePage();
+          },
+        ),
+      ],
+    ),
     _defaultGorouter(
       router: RoutesName.welcome,
       builder: (context, state) => const WelcomeScreen(),
@@ -136,21 +134,21 @@ final GoRouter appRouterConfig = GoRouter(
     //     );
     //   },
     // ),
-    _defaultGorouter(
-      router: RoutesName.main,
-      builder: (context, state) => const Main(),
-      goRoutes: [
-        // _defaultGorouter(
-        //   router: RoutesName.home,
-        //   builder: (context, state) {
-        //     final args = state.extra as bool;
-        //     return HomePage(
-        //       locationPermission: args,
-        //     );
-        //   },
-        // ),
-      ],
-    ),
+    // _defaultGorouter(
+    //   router: RoutesName.main,
+    //   builder: (context, state) => const Main(),
+    //   goRoutes: [
+    //     // _defaultGorouter(
+    //     //   router: RoutesName.home,
+    //     //   builder: (context, state) {
+    //     //     final args = state.extra as bool;
+    //     //     return HomePage(
+    //     //       locationPermission: args,
+    //     //     );
+    //     //   },
+    //     // ),
+    //   ],
+    // ),
     // _dialogRoute(
     //   router: RoutesName.dialogInformation,
     //   builder: (context, state) {
@@ -175,7 +173,6 @@ final GoRouter appRouterConfig = GoRouter(
       router: RoutesName.bottomSheet,
       arg: AppBottomSheetArgs(
         builder: (context) {
-          // TODO(hungnd): test function
           return Container(
             color: Colors.red,
             width: double.infinity,
