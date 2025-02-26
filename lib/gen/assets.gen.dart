@@ -41,6 +41,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_btc.svg
   SvgGenImage get icBtc => const SvgGenImage('assets/icons/ic_btc.svg');
 
+  /// File path: assets/icons/ic_chatgpt.svg
+  SvgGenImage get icChatgpt => const SvgGenImage('assets/icons/ic_chatgpt.svg');
+
   /// File path: assets/icons/ic_chevron_down.svg
   SvgGenImage get icChevronDown =>
       const SvgGenImage('assets/icons/ic_chevron_down.svg');
@@ -128,40 +131,41 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-        icAddSmall,
-        icAddressBook,
-        icArrowLeft,
-        icBack,
-        icBasicBack,
-        icBasicDown,
-        icBtc,
-        icChevronDown,
-        icClose,
-        icCopy,
-        icCopyAdd,
-        icEdit,
-        icExport,
-        icEyeClose,
-        icFunding,
-        icGroup,
-        icHome,
-        icMoreHorizontal,
-        icNotice,
-        icReceive,
-        icReload,
-        icRemove,
-        icRight,
-        icScan,
-        icSearch,
-        icSend,
-        icSettings,
-        icSmallReceive,
-        icSmallSend,
-        icSupport,
-        icTick,
-        icWallet,
-        icWarning
-      ];
+    icAddSmall,
+    icAddressBook,
+    icArrowLeft,
+    icBack,
+    icBasicBack,
+    icBasicDown,
+    icBtc,
+    icChatgpt,
+    icChevronDown,
+    icClose,
+    icCopy,
+    icCopyAdd,
+    icEdit,
+    icExport,
+    icEyeClose,
+    icFunding,
+    icGroup,
+    icHome,
+    icMoreHorizontal,
+    icNotice,
+    icReceive,
+    icReload,
+    icRemove,
+    icRight,
+    icScan,
+    icSearch,
+    icSend,
+    icSettings,
+    icSmallReceive,
+    icSmallSend,
+    icSupport,
+    icTick,
+    icWallet,
+    icWarning,
+  ];
 }
 
 class $AssetsImagesGen {
@@ -216,19 +220,19 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
-        backgrondSpringFlowers,
-        backgrondSummerFlowers,
-        backgroundAutumnFlowers,
-        backgroundWinterFlowers,
-        bgFavorite,
-        bgQuestion,
-        logoBtc,
-        onboardingFirst,
-        onboardingFourth,
-        onboardingSecond,
-        onboardingThird,
-        welcome
-      ];
+    backgrondSpringFlowers,
+    backgrondSummerFlowers,
+    backgroundAutumnFlowers,
+    backgroundWinterFlowers,
+    bgFavorite,
+    bgQuestion,
+    logoBtc,
+    onboardingFirst,
+    onboardingFourth,
+    onboardingSecond,
+    onboardingThird,
+    welcome,
+  ];
 }
 
 class $AssetsTranslationsGen {
@@ -253,11 +257,7 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
 
@@ -317,15 +317,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;
@@ -334,17 +327,11 @@ class AssetGenImage {
 }
 
 class SvgGenImage {
-  const SvgGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = false;
+  const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
+    : _isVecFormat = false;
 
-  const SvgGenImage.vec(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = true;
+  const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
+    : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -398,7 +385,8 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter: colorFilter ??
+      colorFilter:
+          colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
