@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_base_bloc/core/config/router/router_name.dart';
 import 'package:flutter_base_bloc/gen/assets.gen.dart';
+import 'package:flutter_base_bloc/gen/translations.g.dart';
 
 enum PageType {
   spring,
@@ -19,13 +21,13 @@ extension PageTypeExtension on PageType {
   String get pageName {
     switch (this) {
       case PageType.spring:
-        return "Spring Flowers";
+        return LocaleKeys.springFlower.tr();
       case PageType.summer:
-        return "Summer Flowers";
+        return LocaleKeys.summerFlower.tr();
       case PageType.autumn:
-        return "Autumn Flowers";
+        return LocaleKeys.autumnFlower.tr();
       case PageType.winter:
-        return "Winter Flowers";
+        return LocaleKeys.winterFlower.tr();
       default:
         return "";
     }

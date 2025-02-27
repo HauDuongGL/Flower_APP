@@ -7,6 +7,7 @@ class RoutesName {
   static RoutesGen get newsDetail => const RoutesGen('newsDetail');
   static RoutesGen get home => const RoutesGen('home', '');
   static RoutesGen get screenOne => const RoutesGen('screenOne');
+  static RoutesGen get chatGPT => const RoutesGen('chatGPT');
   static RoutesGen get bottomSheet =>
       const RoutesGen('bottomSheet', 'bottomSheet');
 }

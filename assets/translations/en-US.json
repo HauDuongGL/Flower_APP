@@ -1,54 +1,68 @@
 {
-    "homePage":"Home Page",
-    "cancel":"Cancel",
-    "close":"Close",
-    "logout":"Logout",
-    "exit":"Exit app",
-    "confirmExit":"Are you sure want to exit?",
-    "yes":"Yes",
+    "homePage": "Home Page",
+    "cancel": "Cancel",
+    "close": "Close",
+    "logout": "Logout",
+    "exit": "Exit app",
+    "confirmExit": "Are you sure want to exit?",
+    "yes": "Yes",
     "welcome": {
-        "identifyPlant":"Identify Plant",
-        "onBoardingfirst":"You can identify the plant you don't know through your camera",
-        "learnManyPlantsSpecies":"Learn Many Plants Species",
-        "onBoardingSecond":"Let's learn about the many plant species that exist in this world",
-        "readManyArticlesAboutPlant":"Read Many Articles About Plant",
-        "onBoardingThird":"Let's learn more about beautiful plants and read many articles about plants and gardening",
-        "getStarted":"Get Started",
-        "next":"Next"
+        "identifyPlant": "Identify Plant",
+        "onBoardingfirst": "You can identify the plant you don't know through your camera",
+        "learnManyPlantsSpecies": "Learn Many Plants Species",
+        "onBoardingSecond": "Let's learn about the many plant species that exist in this world",
+        "readManyArticlesAboutPlant": "Read Many Articles About Plant",
+        "onBoardingThird": "Let's learn more about beautiful plants and read many articles about plants and gardening",
+        "getStarted": "Get Started",
+        "next": "Next"
     },
     "loginPage": {
-        "login":"Login",
-        "Hello":"Hello",
-        "subTitile":"Let's Learn More About Plants",
-        "userName":"Email",
-        "password":"Password",
-        "account":"Don’t Have Account? ",
-        "forgotPassword":"Forgot Password?",
-        "register":"Sign Up"
+        "login": "Login",
+        "Hello": "Hello",
+        "subTitile": "Let's Learn More About Plants",
+        "userName": "Email",
+        "password": "Password",
+        "account": "Don’t Have Account? ",
+        "forgotPassword": "Forgot Password?",
+        "register": "Sign Up"
     },
     "RegisterPage": {
-        "title":"Register Page",
-        "register":"Register",
-        "subTitile":"Create an account to continue.",
-        "username":"Enter account name",
-        "mail":"Email",
-        "password":"Password",
-        "confirmPassword":"Confirm Password",
-        "question":"Already have an account? Go to the "
+        "title": "Register Page",
+        "register": "Register",
+        "subTitile": "Create an account to continue.",
+        "username": "Enter account name",
+        "mail": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "question": "Already have an account? Go to the "
     },
-    "ForgotpasswordPage":{
-        "message":"Password input does not match",
-        "title":"Set a new password",
-        "subTitile":"Create a new password. Ensure it differs from previous ones for security",
-        "email":"Enter your email",
-        "password":"Enter your new password",
-        "confirmPassword":"Re-enter password",
-        "forgotPassword":"Update Password"
+    "ForgotpasswordPage": {
+        "message": "Password input does not match",
+        "title": "Set a new password",
+        "subTitile": "Create a new password. Ensure it differs from previous ones for security",
+        "email": "Enter your email",
+        "password": "Enter your new password",
+        "confirmPassword": "Re-enter password",
+        "forgotPassword": "Update Password"
     },
-    "erorrMessage":{
-        "Timeout":"Processing timeout, please try again",
-        "noEmail":"Email does not exist",
-        "cofilmPassword":"Confirmed password does not match",
-        "forgotPassword":"Please wait 10 minutes to process password change."
-    }
+    "erorrMessage": {
+        "Timeout": "Processing timeout, please try again",
+        "noEmail": "Email does not exist",
+        "cofilmPassword": "Confirmed password does not match",
+        "forgotPassword": "Please wait 10 minutes to process password change."
+    },
+    "search": "Search For Plants",
+    "plantType": "Plant Type",
+    "chatBot": "Chat Bot",
+    "answerFloBot": "Answer your question with Flobot",
+    "greatAssistant": "Flobot - Plant Expert",
+    "tryItNow": "Try it now",
+    "flowerFavorite": "Flower Favorite",
+    "storeAllFavorite": "Store All Favorite",
+    "flowerCollection": "Flower Collection",
+    "goToFlowerFavorite": "Go to Flower Favorite",
+    "summerFlower": "Summer Flower",
+    "springFlower": "Spring Flower",
+    "autumnFlower": "Autumn Flower",
+    "winterFlower": "Winter Flower"
 }

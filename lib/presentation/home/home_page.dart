@@ -1,18 +1,23 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_bloc/core/base/page/base_scafold.dart';
 import 'package:flutter_base_bloc/core/config/resources/color.dart';
 import 'package:flutter_base_bloc/core/config/resources/dimens.dart';
 import 'package:flutter_base_bloc/core/config/resources/styles.dart';
+import 'package:flutter_base_bloc/core/config/router/router_name.dart';
 import 'package:flutter_base_bloc/core/config/themes/app_theme.dart';
 import 'package:flutter_base_bloc/gen/assets.gen.dart';
+import 'package:flutter_base_bloc/gen/translations.g.dart';
 import 'package:flutter_base_bloc/presentation/home/bloc/home_bloc.dart';
 import 'package:flutter_base_bloc/presentation/home/common/enum.dart';
 import 'package:flutter_base_bloc/presentation/home/common/search_common.dart';
 import 'package:flutter_base_bloc/presentation/home/widget/items.dart';
+import 'package:flutter_base_bloc/presentation/home/widget/list_items_flower.dart';
 import 'package:flutter_base_bloc/presentation/widgets/button/app_button.dart';
 import 'package:flutter_base_bloc/utils/style_utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePageProvider extends StatelessWidget {
   const HomePageProvider({super.key});
@@ -62,9 +67,10 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Hello', style: AppTextStyle.boldText),
+                          Text(LocaleKeys.loginPage_Hello.tr(),
+                              style: AppTextStyle.boldText),
                           Text(
-                            'Let’s Learn More About Plants',
+                            LocaleKeys.loginPage_subTitile.tr(),
                             style: AppTextStyle.lightText.copyWith(
                               color: Colors.white,
                             ),
@@ -93,13 +99,28 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SearchCommon(
-                        hint: 'Search For Plants ',
-                        controller: _isSearch,
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Expanded(
+                            child: SearchCommon(
+                              hint: LocaleKeys.search.tr(),
+                              controller: _isSearch,
+                            ),
+                          ),
+                          spaceW10,
+                          GestureDetector(
+                            child: Container(
+                              child: Assets.icons.icChatgpt.svg(),
+                            ),
+                            onTap: () =>
+                                context.pushNamed(RoutesName.chatGPT.name),
+                          ),
+                        ],
                       ),
                       spaceH18,
                       Text(
-                        'Plant Types',
+                        LocaleKeys.plantType.tr(),
                         style: AppTextStyle.boldText.copyWith(
                           fontSize: 17,
                           color: AppTheme.getInstance().darkBlueGray,
@@ -128,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       spaceH18,
                       Text(
-                        'chatBot',
+                        LocaleKeys.chatBot.tr(),
                         style: AppTextStyle.boldText.copyWith(
                           fontSize: 17,
                           color: AppTheme.getInstance().darkBlueGray,
@@ -152,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   spaceH20,
                                   Text(
-                                    'Answer your question with Flobot',
+                                    LocaleKeys.answerFloBot.tr(),
                                     textAlign: TextAlign.center,
                                     style: AppTextStyle.boldText.copyWith(
                                       fontSize: 14,
@@ -160,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   Text(
-                                    'Flobot - Great assistant',
+                                    LocaleKeys.greatAssistant.tr(),
                                     textAlign: TextAlign.center,
                                     style: AppTextStyle.boldText.copyWith(
                                       fontSize: 17,
@@ -170,16 +191,18 @@ class _HomePageState extends State<HomePage> {
                                   spaceH18,
                                   AppButton(
                                     color: colorWhite,
-                                    title: 'Try it now',
+                                    title: LocaleKeys.tryItNow.tr(),
                                     style: AppTextStyle.boldText
                                         .copyWith(fontSize: 12.sp),
+                                    onTap: () => context
+                                        .pushNamed(RoutesName.chatGPT.name),
                                   ),
                                 ]),
                           ),
                         ),
                       ),
                       Text(
-                        'Favorite Flowers',
+                        LocaleKeys.flowerFavorite.tr(),
                         style: AppTextStyle.boldText.copyWith(
                           fontSize: 17,
                           color: AppTheme.getInstance().darkBlueGray,
@@ -203,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   spaceH20,
                                   Text(
-                                    'Store all your favorite flowers',
+                                    LocaleKeys.storeAllFavorite.tr(),
                                     textAlign: TextAlign.center,
                                     style: AppTextStyle.boldText.copyWith(
                                       fontSize: 14,
@@ -211,7 +234,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   Text(
-                                    'Flower collection',
+                                    LocaleKeys.flowerCollection.tr(),
                                     textAlign: TextAlign.center,
                                     style: AppTextStyle.boldText.copyWith(
                                       fontSize: 17,
@@ -221,7 +244,7 @@ class _HomePageState extends State<HomePage> {
                                   spaceH18,
                                   AppButton(
                                     color: colorWhite,
-                                    title: 'Go favorite flowers',
+                                    title: LocaleKeys.goToFlowerFavorite.tr(),
                                     style: AppTextStyle.boldText
                                         .copyWith(fontSize: 12.sp),
                                   ),
@@ -229,6 +252,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
+                      ListItemFlower()
                     ],
                   ),
                 ),

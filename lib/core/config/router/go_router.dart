@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_bloc/core/network/di/module.dart';
 import 'package:flutter_base_bloc/domain/locals/prefs_service.dart';
+import 'package:flutter_base_bloc/presentation/chatgpt/chatgpt_page.dart';
 import 'package:flutter_base_bloc/presentation/forgot_password/forgotPassword_page.dart';
 import 'package:flutter_base_bloc/presentation/home/home_page.dart';
 import 'package:flutter_base_bloc/presentation/login/login_page.dart';
@@ -125,15 +126,10 @@ final GoRouter appRouterConfig = GoRouter(
     //     );
     //   },
     // ),
-    // _defaultGorouter(
-    //   router: RoutesName.detailsCharge,
-    //   builder: (context, state) {
-    //     final args = state.extra as ChargeStationModel;
-    //     return DetailsScreen(
-    //       item: args,
-    //     );
-    //   },
-    // ),
+    _defaultGorouter(
+      router: RoutesName.chatGPT,
+      builder: (context, state) => const ChatgptPage(),
+    ),
     // _defaultGorouter(
     //   router: RoutesName.main,
     //   builder: (context, state) => const Main(),
