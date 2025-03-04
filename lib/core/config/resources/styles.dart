@@ -32,4 +32,9 @@ class AppTextStyle {
     fontSize: 14,
     color: AppTheme.getInstance().textPrimary,
   );
+  static final boldTextKanit = GoogleFonts.kanit(
+    fontWeight: FontWeight.w700,
+    fontSize: 20,
+    color: AppTheme.getInstance().textPrimary,
+  );
 }

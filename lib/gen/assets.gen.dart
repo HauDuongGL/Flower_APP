@@ -77,6 +77,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_home.svg
   SvgGenImage get icHome => const SvgGenImage('assets/icons/ic_home.svg');
 
+  /// File path: assets/icons/ic_location.svg
+  SvgGenImage get icLocation =>
+      const SvgGenImage('assets/icons/ic_location.svg');
+
   /// File path: assets/icons/ic_more_horizontal.svg
   SvgGenImage get icMoreHorizontal =>
       const SvgGenImage('assets/icons/ic_more_horizontal.svg');
@@ -149,6 +153,7 @@ class $AssetsIconsGen {
     icFunding,
     icGroup,
     icHome,
+    icLocation,
     icMoreHorizontal,
     icNotice,
     icReceive,
